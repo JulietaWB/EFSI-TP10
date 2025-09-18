@@ -1,0 +1,95 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Orders UI */
+.dashboard {
+	display: grid;
+	grid-template-columns: 280px 1fr;
+	gap: 1rem;
+	align-items: start;
+}
+
+.order-filter, .order-stats, .new-order-form {
+	background: #1a1a1a;
+	padding: 1rem;
+	border-radius: 8px;
+	border: 1px solid #2a2a2a;
+}
+
+.order-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.order-item {
+	background: #1a1a1a;
+	padding: 0.75rem 1rem;
+	border-radius: 8px;
+	border: 1px solid #2a2a2a;
+}
+
+.order-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.badge { padding: 0.125rem 0.5rem; border-radius: 999px; font-size: 0.8rem; text-transform: capitalize; }
+.badge-pending { background: #3a2a00; color: #ffd26e; }
+.badge-shipped { background: #002a3a; color: #6ed6ff; }
+.badge-delivered { background: #0a2a00; color: #7dff7a; }
+
+.order-subheader { color: #bbb; font-size: 0.9rem; margin: 0.25rem 0 0.5rem; }
+.order-items { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.25rem; }
+.order-line { display: grid; grid-template-columns: 1fr auto auto; gap: 0.5rem; }
+.order-line .qty { color: #bbb; }
+
+.new-order-form .row { display: grid; gap: 0.25rem; margin-bottom: 0.5rem; }
+.new-order-form .item-row { display: grid; grid-template-columns: 1fr 100px 120px auto; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; }
+.new-order-form input, .new-order-form select { padding: 0.5rem; border-radius: 6px; border: 1px solid #2a2a2a; background: #111; color: #f5f5f5; }
+
+.side {
+	display: grid;
+	gap: 1rem;
+}
