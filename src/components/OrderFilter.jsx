@@ -6,7 +6,7 @@ export default function OrderFilter({ filter, onChange }) {
 	return (
 		<div className="order-filter">
 			<select value={filter} onChange={(e) => onChange(e.target.value)}>
-				<option value="">All</option>
+				<option value="">Todo</option>
 				{STATUS_VALUES.map((s) => (
 					<option key={s} value={s}>
 						{s}

@@ -51,23 +51,24 @@ export default function NewOrderForm({ onAdd }) {
 		<form className="new-order-form" onSubmit={handleSubmit}>
 			<h3>Nuevo pedido</h3>
 			<div className="row">
-				<label>Cliente</label>
-				<input value={customer} onChange={(e) => setCustomer(e.target.value)} placeholder="Nombre del cliente" />
+				<label htmlFor="customer">Cliente</label>
+				<input id="customer" value={customer} onChange={(e) => setCustomer(e.target.value)} placeholder="Ej: Juan Pérez" />
 			</div>
 			<div className="row">
-				<label>Estado</label>
-				<select value={status} onChange={(e) => setStatus(e.target.value)}>
+				<label htmlFor="status">Estado</label>
+				<select id="status" value={status} onChange={(e) => setStatus(e.target.value)}>
 					{STATUS_VALUES.map((s) => (
 						<option key={s} value={s}>{s}</option>
 					))}
 				</select>
 			</div>
+			<h4>Productos</h4>
 			<div className="items">
 				{items.map((it, index) => (
 					<div key={index} className="item-row">
-						<input value={it.name} onChange={(e) => updateItem(index, 'name', e.target.value)} placeholder="Producto" />
-						<input type="number" value={it.quantity} onChange={(e) => updateItem(index, 'quantity', e.target.value)} min={1} step={1} />
-						<input type="number" value={it.price} onChange={(e) => updateItem(index, 'price', e.target.value)} min={0} step={0.01} />
+						<input aria-label={`Producto ${index + 1}`} value={it.name} onChange={(e) => updateItem(index, 'name', e.target.value)} placeholder="Nombre del producto" />
+						<input aria-label={`Cantidad ${index + 1}`} type="number" value={it.quantity} onChange={(e) => updateItem(index, 'quantity', e.target.value)} min={1} step={1} placeholder="Cant." />
+						<input aria-label={`Precio ${index + 1}`} type="number" value={it.price} onChange={(e) => updateItem(index, 'price', e.target.value)} min={0} step={0.01} placeholder="Precio" />
 						<button type="button" onClick={() => removeLine(index)}>Eliminar</button>
 					</div>
 				))}

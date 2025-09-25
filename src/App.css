@@ -1,22 +1,6 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+#root { max-width: 1200px; margin: 0 auto; padding: 2rem; }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+.logo { display: none; }
 
 @keyframes logo-spin {
   from {
@@ -27,69 +11,65 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+@media (prefers-reduced-motion: no-preference) { }
 
-.card {
-  padding: 2em;
-}
+.card { padding: 0; }
 
-.read-the-docs {
-  color: #888;
-}
+.read-the-docs { color: inherit; }
 
-/* Orders UI */
-.dashboard {
-	display: grid;
-	grid-template-columns: 280px 1fr;
-	gap: 1rem;
-	align-items: start;
+/* Layout */
+.app-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.app-header h1 { font-size: 1.5rem; }
+.app-header .subtitle { color: var(--color-muted); }
+
+.dashboard { display: grid; grid-template-columns: 320px 1fr; column-gap: 2.5rem; row-gap: 0; align-items: start; }
+.orders-panel { 
+  min-width: 0; 
+    margin-left: 15rem;
+
+}
+.orders-panel > h2 { margin-bottom: 0.5rem; }
+.orders-panel .order-list { max-width: 100%; }
+
+/* Prevent cards from extending under the sidebar */
+.order-list { 
+  padding-left: 0.5rem; 
+}
+@media (max-width: 200px) {
+	.dashboard { grid-template-columns: 1fr; }
 }
 
 .order-filter, .order-stats, .new-order-form {
-	background: #1a1a1a;
+	background: var(--color-surface);
 	padding: 1rem;
-	border-radius: 8px;
-	border: 1px solid #2a2a2a;
+	border-radius: var(--radius);
+	border: 1px solid var(--color-border);
+	box-shadow: var(--shadow);
 }
 
-.order-list {
-	display: flex;
-	flex-direction: column;
-	gap: 0.75rem;
-}
+.order-list { display: grid; gap: 0.75rem; }
 
-.order-item {
-	background: #1a1a1a;
-	padding: 0.75rem 1rem;
-	border-radius: 8px;
-	border: 1px solid #2a2a2a;
-}
+.order-item { background: var(--color-surface); padding: 0.75rem 1rem; border-radius: var(--radius); border: 1px solid var(--color-border); box-shadow: var(--shadow); }
 
-.order-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
+.order-header { display: flex; justify-content: space-between; align-items: center; }
 
-.badge { padding: 0.125rem 0.5rem; border-radius: 999px; font-size: 0.8rem; text-transform: capitalize; }
-.badge-pending { background: #3a2a00; color: #ffd26e; }
-.badge-shipped { background: #002a3a; color: #6ed6ff; }
-.badge-delivered { background: #0a2a00; color: #7dff7a; }
+.badge { padding: 0.125rem 0.5rem; border-radius: 999px; font-size: 0.8rem; text-transform: capitalize; border: 1px solid var(--color-border); }
+.badge-pending { background: #fff6e0; color: #a06a00; }
+.badge-shipped { background: #eaf4ff; color: #1b6ca1; }
+.badge-delivered { background: #eafbef; color: #227a3b; }
 
-.order-subheader { color: #bbb; font-size: 0.9rem; margin: 0.25rem 0 0.5rem; }
+.order-subheader { color: var(--color-muted); font-size: 0.9rem; margin: 0.25rem 0 0.5rem; }
 .order-items { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.25rem; }
 .order-line { display: grid; grid-template-columns: 1fr auto auto; gap: 0.5rem; }
-.order-line .qty { color: #bbb; }
+.order-line .qty { color: var(--color-muted); }
 
-.new-order-form .row { display: grid; gap: 0.25rem; margin-bottom: 0.5rem; }
-.new-order-form .item-row { display: grid; grid-template-columns: 1fr 100px 120px auto; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; }
-.new-order-form input, .new-order-form select { padding: 0.5rem; border-radius: 6px; border: 1px solid #2a2a2a; background: #111; color: #f5f5f5; }
+.new-order-form .row { display: grid; gap: 0.25rem; margin-bottom: 0.75rem; }
+.new-order-form .item-row { display: grid; grid-template-columns: 1fr 110px 120px auto; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; }
+.new-order-form input, .new-order-form select { padding: 0.6rem 0.7rem; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); box-shadow: var(--shadow); }
+.new-order-form label { font-size: 0.9rem; color: var(--color-muted); }
+.new-order-form .actions { display: flex; justify-content: flex-end; }
 
-.side {
-	display: grid;
-	gap: 1rem;
-}
+.side { display: grid; gap: 1rem; }
+
+/* Ensure no overlaps by avoiding z-index stacking and sticky conflicts */
+.dashboard > div, .side > * , .order-list, .order-item { position: relative; z-index: 0; }

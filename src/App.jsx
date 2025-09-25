@@ -56,17 +56,25 @@ function App() {
   }
 
   return (
-    <div className="dashboard">
-      <div className="side">
-        <OrderFilter filter={filter} onChange={setFilter} />
-        <OrderStats {...stats} />
-        <NewOrderForm onAdd={handleAddOrder} />
+    <>
+      <header className="app-header">
+        <div>
+          <h1>Gestión de pedidos</h1>
+          <div className="subtitle">-MailAmericas-</div>
+        </div>
+      </header>
+      <div className="dashboard">
+        <div className="side">
+          <OrderFilter filter={filter} onChange={setFilter} />
+          <OrderStats {...stats} />
+          <NewOrderForm onAdd={handleAddOrder} />
+        </div>
+        <div className="orders-panel">
+          <h2>Pedidos</h2>
+          <OrderList orders={filteredOrders} />
+        </div>
       </div>
-      <div>
-        <h2 style={{ textAlign: 'left' }}>Pedidos</h2>
-        <OrderList orders={filteredOrders} />
-      </div>
-    </div>
+    </>
   )
 }
 
